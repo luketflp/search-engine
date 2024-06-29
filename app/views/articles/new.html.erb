@@ -1,0 +1,57 @@
+<div style="
+        color: #443c3c;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 5rem;
+
+        box-sizing: border-box;
+        width: 400px;
+        height: 200px;
+
+
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    "
+>
+  <%= form_with(model: @article, local: true) do |form| %>
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+        <ul>
+          <% @article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit :style => "
+        margin-top: 1rem;
+        color: black;
+        background-color: #8b7e7e;
+        font-size: 1rem;
+        font-family: Rubik, sans-serif;
+        padding: 5px;
+        border: 2px solid #606062;
+        cursor: pointer;
+      " %>
+    </div>
+  <% end %>
+</div>

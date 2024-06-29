@@ -1,0 +1,26 @@
+<ul style="
+    width: 25rem;
+    text-align: justify;
+    font-size: 1rem;
+">
+    <% @articles.each do |article| %>
+        <li
+            style="
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            "
+        ><%= article.title %>
+            <ul style='
+                font-size: 13px;
+                font-weight: normal;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            '>
+                <%= article.body %>
+            </ul>
+        </li>
+    <% end %>
+</ul>
+

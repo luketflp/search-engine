@@ -1,0 +1,85 @@
+<div style="
+        color: #443c3c;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 5rem;
+
+        width: 400px;
+        height: 200px;
+
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    "
+>
+    <div>
+        <h1 style="margin: 0;">Search by article title</h1>
+        <%= form_with(url: articles_path, method: :get, data: { controller: 'search-form', turbo_frame: 'articles', turbo_action: 'advance' }) do |form| %>
+            <%= form.text_field :title, id: 'search-input', value: params[:title], data: { action: 'input->search-form#search'}, style: "
+                    padding: 10px;
+                    font-size: 14px;
+                    font-family: Rubik, sans-serif;
+                    border-radius: 10px;
+                    width: 20rem;
+                "
+            %>
+        <% end %>
+
+        <%= render "articles", articles: @articles %>
+
+        <div>
+            <%= link_to 'New Article', new_article_path, :style => "
+                margin-top: 1rem;
+                color: black;
+                background-color: #8b7e7e;
+                font-size: 1rem;
+                font-family: Rubik, sans-serif;
+                padding: 5px;
+                border: 2px solid #606062;
+            ", :id => 'new-article-button' %>
+        </div>
+    </div>
+
+    <div>
+        <div style="width: 20rem;">Your most searched</div>
+        <table style="
+            width: 25rem;
+            text-align: justify;
+            font-size: 12px;
+        ">
+            <tr>
+                <th style="
+                    width: 4rem;
+                ">Rank</th>
+                <th style="
+                    width: 15rem;
+                ">Search</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td style="
+                    max-width: 2rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                ">Maria Anders</td>
+                <td>003</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td style="
+                    max-width: 2rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                ">Francisco Chang</td>
+                <td>004</td>
+            </tr>
+        </table>
+    </div>
+</div>

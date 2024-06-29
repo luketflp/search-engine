@@ -1,0 +1,17 @@
+<div style="
+        color: #443c3c;
+
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+    "
+>
+    <h1><%= @article.title %></h1>
+    <p><%= @article.body %></p>
+
+    <%= link_to 'Back', articles_path %>
+</div>

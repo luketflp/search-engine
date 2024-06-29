@@ -1,0 +1,35 @@
+#body hash syntax means styling to the body portion of the HTML file
+body {
+     background-image: url(“Enter path or url here");
+     background-color: black;       <<<Try hexadecimal, RGB, color
+     background-size: 100%;         <<< Try %, pixels(px)
+     color: white;                  <<<Try hexadecimal, RGB, word
+     text-align: center;            <<<Try left/right/center
+}
+=
+a {
+     text-decoration: none;      <<<removes underline from hyperlink
+     font-family: Arial;         <<< can also customize fonts
+     font-size: 30px;            <<<px,%,small, medium, large
+     font-weight: bold;          <<<Thin/light/normal/medium/bold
+}
+#Three states for anchors. a:link style links that are un-clicked.
+a:hover styles links as a mouse hovers over them. a:visited styles links that have been clicked on.
+a:link {
+     color: white;
+}
+a:hover {
+     color:purple;
+}
+a:visited {
+     color: clear;
+}
+h1{                  <<<can use to refer to all h1 tags
+}
+#if you set a div with a classname you can select it with dot notation ex: <div class="container"> . </div>
+you would select with .<classname>
+.container {
+}
+#selecting a anchor tag within a nav tag <nav> <%=link_to "whatever", user_path</nav>
+.nav a {                     <<<<can access nested tags this way
+}
