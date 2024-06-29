@@ -3,6 +3,7 @@
     height: 20rem;
     text-align: justify;
     font-size: 1rem;
+    padding: 0;
 ">
     <% @articles.each do |article| %>
         <li
@@ -10,8 +11,9 @@
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+                padding-bottom: 10px;
             "
-        ><%= article.title %>
+        > <%= article.title %>
             <ul style='
                 font-size: 13px;
                 font-weight: normal;
