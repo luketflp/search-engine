@@ -13,5 +13,14 @@
     <h1><%= @article.title %></h1>
     <p><%= @article.body %></p>
 
-    <%= link_to 'Back', articles_path %>
+    <%= link_to 'Back', articles_path, :style => "
+        margin-top: 1rem;
+        color: black;
+        background-color: #8b7e7e;
+        font-size: 1rem;
+        font-family: Rubik, sans-serif;
+        padding: 5px;
+        border: 2px solid #606062;
+        cursor: pointer;
+      " %>
 </div>

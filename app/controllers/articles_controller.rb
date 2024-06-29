@@ -3,13 +3,15 @@ class ArticlesController < ApplicationController
   def index
     if params[:title].present?
       @articles = Article.where('LOWER(title) LIKE ?', "%#{params[:title].downcase}%").limit(10)
-      save_search
+      save_search(params[:title])
     else
       @articles = Article.all.limit(10)
     end
 
+    @searches = Search.group(:query).where(session_id: session.id.to_s).order('count_query DESC').limit(10).count(:query)
+
     if turbo_frame_request?
-      render partial: 'articles', locals: { articles: @articles }
+      render partial: 'articles', locals: { articles: @articles, searches: @searches }
     else
       render :index
     end
@@ -26,7 +28,6 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
-    puts "AQUI O BAGUII -> #{article_params}"
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -55,12 +56,11 @@ class ArticlesController < ApplicationController
 
   private
 
-  def save_search
-    Search.new(query: params[:title], session_id: session.id, ip: request.remote_ip).save
+  def save_search(query)
+    Search.create(query: query, session_id: session.id, ip: request.remote_ip)
   end
 
   def article_params
-    puts "AQUI OS PARAMS -> #{params}"
     {
        title: params[:article][:title],
        body: params[:article][:body]

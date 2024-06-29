@@ -1,0 +1,32 @@
+<div>
+    <div style="width: 20rem;">Your most searched</div>
+    <table style="
+        width: 25rem;
+        text-align: justify;
+        font-size: 12px;
+    ">
+        <tr>
+            <th style="
+                width: 4rem;
+            ">Rank</th>
+            <th style="
+                width: 15rem;
+            ">Search</th>
+            <th>Count</th>
+        </tr>
+
+
+        <% @searches.each_with_index do |search, index| %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td style="
+                    max-width: 2rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                "><%= search.first %></td>
+                <td><%= search.second.to_s.rjust(3, "0") %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

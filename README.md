@@ -1,24 +1,30 @@
-# README
+## Lucas Search Engine
+A basic application to simulate a realtime searchbox with search tracking
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+* Ruby
+* Rails
+* PostgreSQL
 
-Things you may want to cover:
+## Installation
+# Clone the repository:
+git clone https://github.com/yourusername/project-name.git
+cd project-name
 
-* Ruby version
+# Install dependencies:
+bundle install
 
-* System dependencies
+## Set up the database:
+rails db:create
+rails db:migrate
 
-* Configuration
+## Usage
+Start the Rails server:
 
-* Database creation
+rails server
 
-* Database initialization
+Open a web browser and go to http://localhost:3000 to view the application.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Testing
+To run tests, use the following command:
+* rails test
