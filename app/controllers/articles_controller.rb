@@ -15,6 +15,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
   # GET /articles/new
   def new
     @article = Article.new
@@ -22,6 +26,7 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
+    puts "AQUI O BAGUII -> #{article_params}"
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -52,5 +57,13 @@ class ArticlesController < ApplicationController
 
   def save_search
     Search.new(query: params[:title], session_id: session.id, ip: request.remote_ip).save
+  end
+
+  def article_params
+    puts "AQUI OS PARAMS -> #{params}"
+    {
+       title: params[:article][:title],
+       body: params[:article][:body]
+    }
   end
 end
